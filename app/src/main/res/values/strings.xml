@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MvpSample</string>
+    <string name="user_format">login: %1$s \nname: %2$s \nfollowers: %3$d \nfollowing: %4$d </string>
+</resources>
