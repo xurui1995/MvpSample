@@ -12,13 +12,13 @@ import android.widget.Toast;
 import com.example.xw.mvpsample.R;
 import com.example.xw.mvpsample.bean.User;
 import com.example.xw.mvpsample.mvp.presenter.MainPresenter;
-import com.example.xw.mvpsample.mvp.view.MainView;
+import com.example.xw.mvpsample.mvp.view.BaseView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity implements MainView{
+public class MainActivity extends AppCompatActivity implements BaseView {
 
     @InjectView(R.id.tv)
     TextView mTextView;

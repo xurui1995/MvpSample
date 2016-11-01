@@ -9,5 +9,4 @@ import rx.Subscriber;
  */
 public interface BaseModel {
     void getUser(Subscriber<User> subscribe,String loginName);
-
 }

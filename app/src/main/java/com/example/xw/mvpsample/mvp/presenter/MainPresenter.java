@@ -1,12 +1,10 @@
 package com.example.xw.mvpsample.mvp.presenter;
 
 import android.text.TextUtils;
-import android.widget.Toast;
 
 import com.example.xw.mvpsample.bean.User;
 import com.example.xw.mvpsample.mvp.model.MainModel;
-import com.example.xw.mvpsample.mvp.view.MainView;
-import com.example.xw.mvpsample.retrofit.HttpMethods;
+import com.example.xw.mvpsample.mvp.view.BaseView;
 
 import rx.Subscriber;
 
@@ -14,7 +12,7 @@ import rx.Subscriber;
  * Created by xw on 2016/11/1.
  */
 public class MainPresenter implements BasePresenter {
-    private MainView mMainView;
+    private BaseView mMainView;
     private MainModel mModel;
 
     public MainPresenter() {
@@ -22,7 +20,7 @@ public class MainPresenter implements BasePresenter {
     }
 
     @Override
-    public void attachView(MainView view) {
+    public void attachView(BaseView view) {
         mMainView=view;
     }
 
@@ -39,18 +37,18 @@ public class MainPresenter implements BasePresenter {
         if (mModel!=null){
             mModel.getUser(new Subscriber<User>() {
                 @Override
-                public void onStart() {
+                public void onStart() {  //先显示对话框
                     mMainView.showProgressDialog();
                 }
 
                 @Override
-                public void onCompleted() {
+                public void onCompleted() {  //请求结束，对话框消失
                     mMainView.hideProgressDialog();
 
                 }
 
                 @Override
-                public void onError(Throwable e) {
+                public void onError(Throwable e) {   //error时
                     mMainView.showErrorMessage("搜索失败");
                 }
 
