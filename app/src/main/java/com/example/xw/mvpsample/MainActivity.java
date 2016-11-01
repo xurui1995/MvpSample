@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements MainView{
 
     @OnClick(R.id.search_btn)
     void search(View view){
-
+        mMainPresenter.searchUser();
     }
 
     @Override

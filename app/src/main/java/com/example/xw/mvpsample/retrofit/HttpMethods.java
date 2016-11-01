@@ -1,5 +1,7 @@
 package com.example.xw.mvpsample.retrofit;
 
+import com.example.xw.mvpsample.bean.User;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -7,6 +9,8 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by xw on 2016/11/1.
@@ -43,7 +47,12 @@ public class HttpMethods {
         return SingletonHolder.INSTANCE;
     }
 
-    public void getUser(){
+    public void getUser(Subscriber<User> subscriber ,String loginName){
+        mGithubService.getUser(loginName)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
 
     }
 }
