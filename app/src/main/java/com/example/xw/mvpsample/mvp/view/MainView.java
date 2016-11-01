@@ -9,4 +9,5 @@ public interface MainView {
     void showProgressDialog();
     void hideProgressDialog();
     void showText(User userbean);
+    void showErrorMessage(String text);
 }

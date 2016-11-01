@@ -10,5 +10,5 @@ import com.example.xw.mvpsample.mvp.view.MainView;
 public interface BasePresenter<T extends MainView> {
     void attachView(T view);
     void detachView();
-    void searchUser();
+    void searchUser(String loginName);
 }
